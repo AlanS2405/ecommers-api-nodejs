@@ -58,5 +58,39 @@ test("GET -> 'URL_BASE', should resturn status code 200 and res.body.length === 
     expect(res.status).toBe(200)
     expect(res.body).toBeDefined()
     expect(res.body).toHaveLength(1)
+});
+
+test("GET ONE-> 'URL_BASE/:id', should resturn status code 200 and res.body.title = product.title", async () => {
+    const res = await request(app)
+        .get(`${URL_BASE}/${productId}`)
+
+    expect(res.status).toBe(200)
+    expect(res.body).toBeDefined()
+    expect(res.body.title).toBe(product.title)
+});
+
+test("PUT -> 'URL_BASE/:id', should resturn status code 200 and res.body.title = product.title", async () => {
+
+    const productUpdate = {
+        title: "Shining"
+    }
+
+    const res = await request(app)
+        .put(`${URL_BASE}/${productId}`)
+        .send(productUpdate)
+        .set("Authorization", `Bearer ${TOKEN}`)
+
+    expect(res.status).toBe(200)
+    expect(res.body).toBeDefined()
+    expect(res.body.title).toBe(productUpdate.title)
     await category.destroy()
+});
+
+test("DELETE -> 'URL_BASE/:id', should resturn status code 204", async () => {
+    const res = await request(app)
+        .delete(`${URL_BASE}/${productId}`)
+        .set("Authorization", `Bearer ${TOKEN}`)
+
+    expect(res.status).toBe(204)
+    expect(res.body).toBeDefined()
 });
