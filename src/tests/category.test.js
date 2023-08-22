@@ -4,6 +4,7 @@ require('../models')
 
 const URL_BASE = '/api/v1/categories'
 const URL_BASE_USERS = '/api/v1/users'
+let categoryId
 
 
 
