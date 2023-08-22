@@ -25,8 +25,6 @@ test("GET -> 'URL_BASE', should return send status 200, res.body id defined, res
         .get(URL_BASE)
         .set('Authorization', `Bearer ${TOKEN}`)
 
-        console.log(res.body);
-
         expect(res.statusCode).toBe(200)
         expect(res.body).toBeDefined()
         expect(res.body).toHaveLength(1)
