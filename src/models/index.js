@@ -1,23 +1,31 @@
 const Cart = require("./Cart");
 const Category = require("./Category");
 const Product = require("./Product");
+const ProductImg = require("./ProductImg");
 const Purchase = require("./Purchase");
 const User = require("./User");
 
-//En la tabla product creamos la columna categoryId
-Product.belongsTo(Category)//categoryId
+
+//Product -> categoryId
+Product.belongsTo(Category)
 Category.hasMany(Product)
 
-//En la tabla Cart creamos las columnas userId y productId
-Cart.belongsTo(User) //userId
+//Cart -> userId
+Cart.belongsTo(User)
 User.hasMany(Cart)
 
-Cart.belongsTo(Product) //productId
+//Cart -> productId
+Cart.belongsTo(Product)
 Product.hasMany(Cart)
 
-//En la tabla Purchase creamos las columnas userId y productId
-Purchase.belongsTo(User) //userId
+//Purchase -> userId
+Purchase.belongsTo(User)
 User.hasMany(Purchase)
 
-Purchase.belongsTo(Product) //productId
+//Purchase -> productId
+Purchase.belongsTo(Product)
 Product.hasMany(Purchase)
+
+//ProductImg -> productId
+ProductImg.belongsTo(Product)
+Product.hasMany(ProductImg)
