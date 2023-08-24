@@ -1,5 +1,5 @@
 const express = require('express');
-const verifyJWT = require('../utils/verifYJWT');
+const verifyJWT = require('../utils/verifyJWT');
 
 const routerUser = require('./user.router');
 const routerCategory = require('./category.router');
